@@ -1,0 +1,16 @@
+.btnList {
+    display: flex;
+}
+
+.btnItem:not(:last-child) {
+    margin-right: 30px;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 60px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: transparent;
+}
