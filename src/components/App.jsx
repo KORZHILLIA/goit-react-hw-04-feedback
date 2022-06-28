@@ -3,7 +3,7 @@ import Section from './Section';
 import NotificationMessage from './NotificationMessage';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
-import feedbackOptions from 'database/feedbackGrades';
+import feedbackOptions from 'components/feedbackGrades';
 
 export class App extends Component {
   state = {
@@ -30,7 +30,7 @@ export class App extends Component {
 
   render() {
     const { good, bad, neutral } = this.state;
-    const total = good + neutral + bad;
+    const total = this.countTotalFeedback();
     return (
       <div className="container">
         <Section title="Leave your feedback">
@@ -48,7 +48,7 @@ export class App extends Component {
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
+              total={total}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           )}

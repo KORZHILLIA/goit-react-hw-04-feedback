@@ -6,11 +6,6 @@ const Section = ({ title, children }) => (
   </>
 );
 
-Section.defaultProps = {
-  title: '',
-  children: null,
-};
-
 Section.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
