@@ -6,26 +6,21 @@ import Statistics from './Statistics';
 import feedbackOptions from 'components/feedbackGrades';
 
 function App() {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
+  const [state, setState] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
 
-  const total = good + neutral + bad;
+  const { good, neutral, bad } = state;
+
+  const stateValues = Object.values(state);
+  const total = stateValues.reduce((acc, el) => {
+    return acc + el;
+  }, 0);
 
   function changeGrade(grade) {
-    switch (grade) {
-      case 'good':
-        setGood(good => good + 1);
-        break;
-      case 'neutral':
-        setNeutral(neutral => neutral + 1);
-        break;
-      case 'bad':
-        setBad(bad => bad + 1);
-        break;
-      default:
-        return;
-    }
+    setState(prevstate => ({ ...prevstate, [grade]: prevstate[grade] + 1 }));
   }
 
   function countPositiveFeedbackPercentage() {
