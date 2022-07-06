@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 const Section = ({ title, children }) => (
   <>
@@ -11,4 +12,4 @@ Section.propTypes = {
   children: PropTypes.node,
 };
 
-export default Section;
+export default memo(Section);

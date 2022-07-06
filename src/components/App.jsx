@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import Section from './Section';
 import NotificationMessage from './NotificationMessage';
 import FeedbackOptions from './FeedbackOptions';
@@ -19,9 +19,12 @@ function App() {
     return acc + el;
   }, 0);
 
-  function changeGrade(grade) {
-    setState(prevstate => ({ ...prevstate, [grade]: prevstate[grade] + 1 }));
-  }
+  const changeGrade = useCallback(
+    grade => {
+      setState(prevstate => ({ ...prevstate, [grade]: prevstate[grade] + 1 }));
+    },
+    [setState]
+  );
 
   function countPositiveFeedbackPercentage() {
     const preparedResult = `${Math.ceil((good / total) * 100)}%`;
